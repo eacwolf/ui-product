@@ -1,0 +1,395 @@
+/* Engagement Styles */
+
+.engagement-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.engagement-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.engagement-header {
+  padding: 30px 0 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.engagement-header h1 {
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.engagement-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.engagement-main {
+  flex: 1;
+  padding: 30px 0;
+}
+
+/* Tabs */
+.engagement-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+  color: #3b82f6;
+}
+
+.tab-btn.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+/* Engagement List */
+.engagement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.engagement-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 20px;
+  align-items: start;
+  transition: all 0.3s;
+}
+
+.engagement-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+}
+
+.engagement-main-info {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+}
+
+.candidate-info h3 {
+  font-size: 1.05rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.position {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.engagement-action p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.action {
+  color: #1f2937;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.timestamp {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+.engagement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  min-width: 150px;
+}
+
+.response-rate {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.engagement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.engagement-actions button {
+  padding: 8px 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.engagement-actions button:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #9ca3af;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  min-height: 300px;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Engagement Stats */
+.engagement-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .engagement-content {
+    padding: 0 18px;
+  }
+
+  .engagement-card {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .engagement-content {
+    padding: 0 15px;
+  }
+
+  .engagement-header {
+    padding: 25px 0 15px 0;
+  }
+
+  .engagement-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .engagement-tabs {
+    border-bottom-width: 1px;
+    padding-bottom: 8px;
+  }
+
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    margin-bottom: -1px;
+  }
+
+  .engagement-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .engagement-main-info {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .engagement-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: auto;
+  }
+
+  .engagement-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .engagement-content {
+    padding: 0 12px;
+  }
+
+  .engagement-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .engagement-tabs {
+    gap: 5px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .engagement-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .engagement-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .engagement-actions button {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .candidate-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .position {
+    font-size: 0.8rem;
+  }
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .engagement-card {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .engagement-main-info {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .engagement-meta {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .engagement-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .engagement-content {
+    padding: 0 15px;
+  }
+
+  .engagement-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .engagement-card {
+    padding: 15px;
+  }
+
+  .engagement-actions button {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .engagement-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+
+  .engagement-stats {
+    grid-template-columns: 1fr;
+  }
+}

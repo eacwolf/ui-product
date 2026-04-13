@@ -1,0 +1,429 @@
+/* Sourcing Hub Styles */
+
+.sourcing-hub-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.sourcing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.sourcing-header {
+  padding: 30px 0 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sourcing-header h1 {
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.sourcing-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.sourcing-main {
+  flex: 1;
+  padding: 20px 0;
+}
+
+/* Tabs Container */
+.tabs-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 20px;
+  padding: 0 0 0 0;
+  border-radius: 8px 8px 0 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6b7280;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: #3b82f6;
+}
+
+.tab-button.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.close-tab {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  display: none;
+  transition: color 0.3s;
+}
+
+.tab-button:hover .close-tab {
+  display: inline;
+  color: #6b7280;
+}
+
+.tabs-actions {
+  display: flex;
+  gap: 10px;
+  padding: 10px 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+/* Tab Content */
+.tab-content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+  background: white;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  overflow: hidden;
+}
+
+.job-details {
+  padding: 30px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.job-header {
+  margin-bottom: 30px;
+}
+
+.job-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.job-title h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #1f2937;
+}
+
+.ai-badge {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.job-description {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.job-description p {
+  margin: 0 0 12px 0;
+}
+
+.skills-section {
+  margin-bottom: 25px;
+}
+
+.skills-section h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.skill-tag {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.skill-tag.inferred {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+.skill-note {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.search-sources {
+  margin-bottom: 0;
+}
+
+.source-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.source-button {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.source-button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Candidates Section */
+.candidates-section {
+  padding: 30px;
+  background: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.candidates-header {
+  margin-bottom: 20px;
+}
+
+.candidates-header h3 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.candidate-count {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.candidates-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.empty-state p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .tab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .job-details {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .candidates-section {
+    background: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .sourcing-content {
+    padding: 0 15px;
+  }
+
+  .sourcing-header {
+    padding: 25px 0 15px 0;
+  }
+
+  .sourcing-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .tabs-container {
+    padding: 10px 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tabs-list {
+    width: 100%;
+    padding: 8px 0;
+    overflow-x: auto;
+  }
+
+  .tabs-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tab-content {
+    grid-template-columns: 1fr;
+  }
+
+  .job-details {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px;
+  }
+
+  .candidates-section {
+    background: white;
+    padding: 20px;
+  }
+
+  .job-title h2 {
+    font-size: 1.25rem;
+  }
+
+  .skills-tags {
+    gap: 6px;
+  }
+
+  .skill-tag {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sourcing-content {
+    padding: 0 12px;
+  }
+
+  .sourcing-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .tabs-list {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tab-button {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .tabs-actions {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .job-details,
+  .candidates-section {
+    padding: 16px;
+  }
+
+  .skills-section h3 {
+    font-size: 0.8rem;
+  }
+
+  .skill-tag {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .source-button {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}

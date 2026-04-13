@@ -1,0 +1,393 @@
+/* AI Sourcing Styles */
+
+.ai-sourcing-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.ai-sourcing-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.ai-sourcing-header {
+  padding: 30px 0 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ai-sourcing-header h1 {
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.ai-sourcing-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.ai-sourcing-main {
+  flex: 1;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Input Section */
+.input-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input-section h2 {
+  font-size: 1.25rem;
+  margin: 0 0 20px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.job-description-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  resize: vertical;
+  transition: all 0.3s;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.job-description-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.job-description-input::placeholder {
+  color: #9ca3af;
+}
+
+.analyze-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Analysis Section */
+.analysis-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.analysis-section h2 {
+  font-size: 1.25rem;
+  margin: 0 0 25px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.analysis-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analysis-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.analysis-card h3 {
+  font-size: 0.95rem;
+  margin: 0 0 15px 0;
+  color: #1f2937;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-card p {
+  margin: 10px 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.analysis-card p strong {
+  color: #1f2937;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.skill-chip {
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.skill-primary {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.skill-secondary {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+.create-job-btn {
+  align-self: flex-start;
+  margin-top: 15px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.create-job-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ai-sourcing-content {
+    padding: 0 18px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .sample-jobs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ai-sourcing-content {
+    padding: 0 15px;
+  }
+
+  .ai-sourcing-header {
+    padding: 25px 0 15px 0;
+  }
+
+  .ai-sourcing-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .ai-sourcing-main {
+    gap: 30px;
+    padding: 30px 0;
+  }
+
+  .input-section h2,
+  .analysis-section h2,
+  .sample-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .job-description-input {
+    padding: 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+
+  .analyze-btn {
+    padding: 10px 24px;
+    margin-top: 16px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .skill-chip {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .sample-jobs {
+    grid-template-columns: 1fr;
+  }
+
+  .sample-card {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ai-sourcing-content {
+    padding: 0 12px;
+  }
+
+  .ai-sourcing-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .ai-sourcing-main {
+    gap: 25px;
+    padding: 20px 0;
+  }
+
+  .input-section,
+  .analysis-section,
+  .sample-section {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .job-description-input {
+    padding: 12px;
+    font-size: 0.9rem;
+    rows: 6;
+  }
+
+  .analyze-btn {
+    width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .skill-chip {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .analysis-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Sample Jobs Section */
+.sample-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sample-section h3 {
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.sample-jobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.sample-card {
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sample-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.sample-card h4 {
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.sample-card p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ai-sourcing-content {
+    padding: 0 15px;
+  }
+
+  .input-section,
+  .analysis-section,
+  .sample-section {
+    padding: 20px;
+  }
+
+  .ai-sourcing-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .sample-jobs {
+    grid-template-columns: 1fr;
+  }
+}

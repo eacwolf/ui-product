@@ -1,0 +1,265 @@
+/* Candidates Styles */
+
+.candidates-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.candidates-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.candidates-header {
+  padding: 30px 0 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.candidates-header h1 {
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.candidates-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.candidates-main {
+  flex: 1;
+  padding: 30px 0;
+}
+
+/* Filters */
+.candidates-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+/* Table Wrapper */
+.candidates-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.candidates-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.candidates-table thead {
+  background: #f3f4f6;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.candidates-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.candidates-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.candidate-row:hover {
+  background: #f9fafb;
+}
+
+.candidate-name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.candidate-email {
+  color: #3b82f6;
+}
+
+.candidate-email a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.candidate-email a:hover {
+  color: #1e40af;
+  text-decoration: underline;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-badge {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.match-score {
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.source {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  padding: 4px;
+}
+
+.action-btn:hover {
+  opacity: 1;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.empty-state p {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .candidates-table {
+    font-size: 0.85rem;
+  }
+
+  .candidates-table th,
+  .candidates-table td {
+    padding: 12px;
+  }
+
+  .skills-list {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .candidates-content {
+    padding: 0 15px;
+  }
+
+  .candidates-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .candidates-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .candidates-table {
+    font-size: 0.8rem;
+  }
+
+  .candidates-table th,
+  .candidates-table td {
+    padding: 10px;
+  }
+
+  .skill-badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+
+  .action-btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .candidates-filters {
+    flex-wrap: wrap;
+  }
+
+  .candidates-table-wrapper {
+    overflow-x: scroll;
+  }
+}
