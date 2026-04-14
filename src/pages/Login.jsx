@@ -27,18 +27,30 @@ function Login() {
       newErrors.email = 'Email address is required';
     } else if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       newErrors.email = 'Please enter a valid email address';
-    } else {
-      // Check if email exists in system (one user per email)
-      const registeredEmail = localStorage.getItem('userEmail');
-      if (!registeredEmail || registeredEmail.toLowerCase() !== email.toLowerCase()) {
-        newErrors.email = 'This email is not registered. Please create an account first.';
-      }
+
     }
 
     if (!password) {
       newErrors.password = 'Password is required';
-    } else if (password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters long';
+    }
+
+    if (Object.keys(newErrors).length === 0) {
+      // Check if credentials match
+      const userData = localStorage.getItem('userData');
+      if (userData) {
+        try {
+          const user = JSON.parse(userData);
+          if (user.email !== email.toLowerCase()) {
+            newErrors.email = 'Email not found. Please create an account.';
+          } else if (user.password !== password) {
+            newErrors.password = 'Incorrect password. Please try again.';
+          }
+        } catch (e) {
+          newErrors.general = 'Error reading user data.';
+        }
+      } else {
+        newErrors.email = 'No user account found. Please create an account.';
+      }
     }
 
     return newErrors;
@@ -56,22 +68,30 @@ function Login() {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
 
-        // Verify password matches stored password
-        const storedPassword = localStorage.getItem('userPassword');
-        if (storedPassword && storedPassword === password) {
-          // Store user info in localStorage (for demo purposes)
-          localStorage.setItem('userEmail', email);
-          localStorage.setItem('isLoggedIn', 'true');
+        // Get user data and verify
+        const userData = localStorage.getItem('userData');
+        if (userData) {
+          const user = JSON.parse(userData);
+          if (user.email === email.toLowerCase() && user.password === password) {
+            localStorage.setItem('currentUser', JSON.stringify({
+              email: user.email,
+              name: user.name,
+              company: user.company
+            }));
+            localStorage.setItem('isLoggedIn', 'true');
 
-          if (rememberMe) {
-            localStorage.setItem('rememberedEmail', email);
+            if (rememberMe) {
+              localStorage.setItem('rememberedEmail', email);
+            } else {
+              localStorage.removeItem('rememberedEmail');
+            }
+
+            navigate('/dashboard');
           } else {
-            localStorage.removeItem('rememberedEmail');
+            setErrors({ general: 'Invalid email or password. Please try again.' });
           }
-
-          navigate('/dashboard');
         } else {
-          setErrors({ password: 'Incorrect password. Please try again.' });
+          setErrors({ general: 'No user account found. Please register first.' });
         }
       } catch {
         setErrors({ general: 'Login failed. Please try again.' });

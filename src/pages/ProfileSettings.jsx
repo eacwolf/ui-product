@@ -27,9 +27,13 @@ function ProfileSettings() {
       return;
     }
 
-    // Load user data
-    const firstName = localStorage.getItem('userName')?.split(' ')[0] || '';
-    const email = localStorage.getItem('userEmail') || '';
+    // Load user data from new structure
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    
+    const firstName = userData.name?.split(' ')[0] || '';
+    const email = userData.email || '';
+    
     setFormData(prev => ({
       ...prev,
       firstName,

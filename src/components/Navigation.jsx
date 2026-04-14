@@ -6,16 +6,19 @@ function Navigation() {
   const navigate = useNavigate();
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const userName = localStorage.getItem('userName') || 'User';
-  const userEmail = localStorage.getItem('userEmail') || 'user@example.com';
+  
+  // Parse userData from localStorage
+  const userData = JSON.parse(localStorage.getItem('currentUser') || '{"name": "User", "email": "user@example.com"}');
+  const userName = userData.name || 'User';
+  const userEmail = userData.email || 'user@example.com';
 
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userCompany');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('companyData');
     navigate('/login');
   };
 

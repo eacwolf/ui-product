@@ -7,6 +7,13 @@ function SourcingHub() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Account Executive');
   const [tabs, setTabs] = useState([]);
+  const [showNewJobForm, setShowNewJobForm] = useState(false);
+  const [newJobData, setNewJobData] = useState({
+    name: '',
+    coreSkills: '',
+    inferredSkills: '',
+    searchSources: ''
+  });
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -60,6 +67,56 @@ function SourcingHub() {
     ]);
   }, [navigate]);
 
+  const handleCloseTab = (tabName, e) => {
+    e.stopPropagation();
+    const filteredTabs = tabs.filter(tab => tab.name !== tabName);
+    setTabs(filteredTabs);
+    
+    // If closed tab was active, switch to another tab
+    if (activeTab === tabName && filteredTabs.length > 0) {
+      setActiveTab(filteredTabs[0].name);
+    } else if (filteredTabs.length === 0) {
+      setActiveTab(null);
+    }
+  };
+
+  const handleCreateNewJob = () => {
+    if (!newJobData.name.trim()) {
+      alert('Please enter a job title');
+      return;
+    }
+
+    const jobId = Math.max(...tabs.map(t => t.id), 0) + 1;
+    const newJob = {
+      id: jobId,
+      name: newJobData.name,
+      status: 'active',
+      coreSkills: newJobData.coreSkills
+        ? newJobData.coreSkills.split(',').map(s => s.trim()).filter(s => s)
+        : [],
+      inferredSkills: newJobData.inferredSkills
+        ? newJobData.inferredSkills.split(',').map(s => s.trim()).filter(s => s)
+        : [],
+      candidates: 0,
+      searchSources: newJobData.searchSources
+        ? newJobData.searchSources.split(',').map(s => s.trim()).filter(s => s)
+        : ['Uploaded']
+    };
+
+    setTabs([...tabs, newJob]);
+    setActiveTab(newJob.name);
+    setNewJobData({ name: '', coreSkills: '', inferredSkills: '', searchSources: '' });
+    setShowNewJobForm(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewJobData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }
+
   const activeTabData = tabs.find(tab => tab.name === activeTab);
 
   return (
@@ -84,16 +141,111 @@ function SourcingHub() {
                 >
                   {tab.name}
                   <span className="status-dot"></span>
-                  <button className="close-tab">×</button>
+                  <button 
+                    className="close-tab"
+                    onClick={(e) => handleCloseTab(tab.name, e)}
+                    title="Close tab"
+                  >
+                    ×
+                  </button>
                 </button>
               ))}
             </div>
             <div className="tabs-actions">
               <button className="btn btn-secondary">Tabs</button>
               <button className="btn btn-secondary">Dashboard</button>
-              <button className="btn btn-primary">+ New Job Tab</button>
+              <button 
+                className="btn btn-primary"
+                onClick={() => setShowNewJobForm(!showNewJobForm)}
+              >
+                + New Job Tab
+              </button>
             </div>
           </div>
+
+          {/* New Job Form */}
+          {showNewJobForm && (
+            <div className="new-job-form-container">
+              <div className="new-job-form">
+                <div className="form-header">
+                  <h3>Create New Job Tab</h3>
+                  <button 
+                    className="close-form-btn"
+                    onClick={() => setShowNewJobForm(false)}
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="jobName">Job Title *</label>
+                  <input
+                    type="text"
+                    id="jobName"
+                    name="name"
+                    value={newJobData.name}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Senior Developer, Product Manager"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="coreSkills">Core Skills (comma-separated)</label>
+                  <input
+                    type="text"
+                    id="coreSkills"
+                    name="coreSkills"
+                    value={newJobData.coreSkills}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Python, JavaScript, React"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="inferredSkills">Inferred Skills (comma-separated)</label>
+                  <input
+                    type="text"
+                    id="inferredSkills"
+                    name="inferredSkills"
+                    value={newJobData.inferredSkills}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Problem solving, Communication"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="searchSources">Search Sources (comma-separated)</label>
+                  <input
+                    type="text"
+                    id="searchSources"
+                    name="searchSources"
+                    value={newJobData.searchSources}
+                    onChange={handleInputChange}
+                    placeholder="e.g., LinkedIn, GitHub, Naukri"
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-actions">
+                  <button 
+                    className="btn btn-primary"
+                    onClick={handleCreateNewJob}
+                  >
+                    Create Job Tab
+                  </button>
+                  <button 
+                    className="btn btn-secondary"
+                    onClick={() => setShowNewJobForm(false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Content */}
           {activeTabData && (

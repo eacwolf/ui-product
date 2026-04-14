@@ -14,9 +14,9 @@ function Dashboard() {
       return;
     }
 
-    const userName = localStorage.getItem('userName') || 'User';
-    const userCompany = localStorage.getItem('userCompany') || 'Company';
-    setUserData({ name: userName, company: userCompany });
+    // Load user data from new structure
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{"name": "User", "company": "Company"}');
+    setUserData({ name: currentUser.name || 'User', company: currentUser.company || 'Company' });
   }, [navigate]);
 
   const metrics = [

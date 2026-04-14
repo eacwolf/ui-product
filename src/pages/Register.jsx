@@ -37,20 +37,12 @@ function Register() {
       newErrors.email = 'Email address is required';
     } else if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       newErrors.email = 'Please enter a valid email address';
-    } else {
-      // Check if email already exists (unique email validation)
-      const existingEmail = localStorage.getItem('userEmail');
-      if (existingEmail && existingEmail.toLowerCase() === formData.email.toLowerCase()) {
-        newErrors.email = 'This email is already registered. Please login or use a different email.';
-      }
     }
 
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters long';
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-      newErrors.password = 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters long';
     }
 
     if (formData.password !== formData.confirmPassword) {
@@ -86,16 +78,20 @@ function Register() {
 
       try {
         // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         // Store user info in localStorage (for demo purposes)
-        localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('userPassword', formData.password);
-        localStorage.setItem('userName', `${formData.firstName} ${formData.lastName}`);
-        localStorage.setItem('userCompany', formData.company);
+        const userData = {
+          email: formData.email.toLowerCase(),
+          password: formData.password,
+          name: `${formData.firstName} ${formData.lastName}`,
+          company: formData.company,
+          createdAt: new Date().toISOString()
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
         localStorage.setItem('isLoggedIn', 'true');
         navigate('/dashboard');
-      } catch {
+      } catch (error) {
         setErrors({ general: 'Registration failed. Please try again.' });
       } finally {
         setIsLoading(false);
@@ -225,7 +221,7 @@ function Register() {
               </div>
               {errors.password && <span className="error-message">{errors.password}</span>}
               <div style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '4px' }}>
-                Password must be at least 8 characters with uppercase, lowercase, and numbers
+                Password must be at least 6 characters
               </div>
             </div>
 

@@ -8,19 +8,26 @@ function CompanySettings() {
   const [activeTab, setActiveTab] = useState('general');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [companyData, setCompanyData] = useState({
-    companyName: localStorage.getItem('userCompany') || '',
-    companyEmail: '',
-    website: '',
-    industry: '',
-    companySize: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    country: '',
-    phone: '',
-    taxId: ''
+  const [companyData, setCompanyData] = useState(() => {
+    // Load company data from userData if available
+    const userData = JSON.parse(localStorage.getItem('userData') || '{"company": ""}');
+    const savedCompanyData = localStorage.getItem('companyData');
+    const parsed = savedCompanyData ? JSON.parse(savedCompanyData) : {};
+    
+    return {
+      companyName: parsed.companyName || userData.company || '',
+      companyEmail: parsed.companyEmail || '',
+      website: parsed.website || '',
+      industry: parsed.industry || '',
+      companySize: parsed.companySize || '',
+      address: parsed.address || '',
+      city: parsed.city || '',
+      state: parsed.state || '',
+      zipCode: parsed.zipCode || '',
+      country: parsed.country || '',
+      phone: parsed.phone || '',
+      taxId: parsed.taxId || ''
+    };
   });
 
   const [teamMembers, setTeamMembers] = useState([
@@ -55,7 +62,13 @@ function CompanySettings() {
     setIsLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      localStorage.setItem('userCompany', companyData.companyName);
+      
+      // Update userData with new company name
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+      currentUser.company = companyData.companyName;
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      
+      // Save company data
       localStorage.setItem('companyData', JSON.stringify(companyData));
       setMessage('Company information updated successfully!');
       setTimeout(() => setMessage(''), 3000);
